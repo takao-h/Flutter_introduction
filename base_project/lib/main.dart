@@ -28,7 +28,9 @@ class _RandomWordsState extends State<RandomWords> {
         if (index >= _suggestions.length) {
           _suggestions.addAll(generateWordPairs().take(10));
     }
-        return Text(_suggestions[index].asPascalCase);
+        return Text(
+          _suggestions[index].asPascalCase,
+          style: _biggerFont,);
     },
     );
   }
@@ -46,8 +48,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('welcome to Flutter'),
         ),
-        body: Center(
-          child: Text(wordPair.asPascalCase),
+        body: const Center(
+          child: RandomWords(),
         )
       )
     );
