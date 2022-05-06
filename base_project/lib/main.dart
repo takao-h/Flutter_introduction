@@ -57,3 +57,16 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const Page2(),
+    transitionsBuilder: (context, animation, seconndaryAnimation, child) {
+      return child;
+    },
+  );
+}
+
+class Page2 extends StatelessWidget {
+  const Page2({Key? key
+  }
