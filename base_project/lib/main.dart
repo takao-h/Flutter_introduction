@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
 
 void main() {
   runApp(const MaterialApp(home: PhysicsCardDragDemo()));
@@ -51,7 +52,9 @@ class _DraggableCardState extends State<DraggableCard>
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return GestureDetector(
-      onPanDown: (details) {},
+      onPanDown: (details) {
+        _animatedContainer.stop();
+      },
       onPanUpdate: (details) {
         setState(() {
           _dragAlignment += Alignment(
@@ -60,7 +63,9 @@ class _DraggableCardState extends State<DraggableCard>
           );
         });
       },
-      onPanEnd: (details) {},
+      onPanEnd: (details) {
+        _runAnimation();
+      },
       child: Align(
         alignment: _dragAlignment,
         child: Card(
@@ -70,3 +75,5 @@ class _DraggableCardState extends State<DraggableCard>
     );
   }
 }
+
+
