@@ -86,5 +86,8 @@ transitoinBuilder: (context, animation, secondaryAnimation, child) {
   const end = Offset.zero;
   final tween = Tween(begin: begin, end: end);
   final offsetAnimation = animation.drive(tween);
-  return child;
+  return SlideTransition(
+    posision: offsetAnimation,
+    child: child,
+  );
 }
