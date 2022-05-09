@@ -61,12 +61,30 @@ class MyApp extends StatelessWidget {
 Route _createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const Page2(),
-    transitionsBuilder: (context, animation, seconndaryAnimation, child) {
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
       return child;
     },
   );
 }
 
 class Page2 extends StatelessWidget {
-  const Page2({Key? key
+  const Page2({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: const Center(
+        child: Text('Page 2'),
+      ),
+    );
   }
+}
+
+transitoinBuilder: (context, animation, secondaryAnimation, child) {
+  const begin = Offset(0.0, 1.0);
+  const end = Offset.zero;
+  final tween = Tween(begin: begin, end: end);
+  final offsetAnimation = animation.drive(tween);
+  return child;
+}
