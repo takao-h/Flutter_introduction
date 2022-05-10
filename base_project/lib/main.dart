@@ -56,7 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: const Text('item 1'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
             ListTile(
               title: const Text('item 2'),
