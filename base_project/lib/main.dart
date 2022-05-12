@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,7 +51,14 @@ class _MyHomePageState extends State<MyHomePage> {
             const DrawerHeader(child: Text("hacker news")),
             ListTile(
               title: const Text("New"),
-              onTap: () {},
+              onTap: () {
+                Future<List<String>> _fetchNew() async {
+                  final res = await http.get("https://hacker-news.firebaseio.com/v0/newstories.json");
+                  return res;
+                }
+
+
+              },
             ),
             ListTile(
               title: const Text("top stories"),
