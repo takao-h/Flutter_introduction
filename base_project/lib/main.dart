@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-
+import 'package:http/http.dart' as http;
 void main() {
   runApp(const MyApp());
 }
@@ -52,11 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               title: const Text("New"),
               onTap: () {
-                Future<List<String>> _fetchNew() async {
-                  final res = await http.get("https://hacker-news.firebaseio.com/v0/newstories.json");
+                Future<http.Response> _fetchNew() async {
+                  var url = Uri.https('https://hacker-news.firebaseio.com/', 'v0/newstories.json', {'q': '{http}'});
+                  final res = await http.get(url);
+
+                  print("##################################");
+                  print(res.body);
+                  print("##################################");
                   return res;
                 }
-
+              _fetchNew();
 
               },
             ),
