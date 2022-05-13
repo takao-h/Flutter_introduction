@@ -29,7 +29,5 @@ class Story {
         time = json['time'].toString(),
         title = json['title'].toString(),
         type = json['type'].toString(),
-        url = json['url'].toString()
-
-  ,
+        url = json['url'].toString();
 }
